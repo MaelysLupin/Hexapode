@@ -4,7 +4,7 @@ Assistant engineer internship project
 Automatic landing of a drone by visual servoing
 
 Part covered : Modeling and simulation of the behavior of a naval platform in ROS (Robot Operating System)
-![My Image](Hexa.png | width=100)
+<img src="Hexa.png" width="100" height="100">
 
 ## Description
 
