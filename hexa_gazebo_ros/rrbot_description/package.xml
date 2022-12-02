@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <name>rrbot_description</name>
+  <version>0.0.0</version>
+  <description>The rrbot_description package</description>
+
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>BSD</license>
+
+  <maintainer email="maelyslupin6@gmail.com">Maelys Lupin</maintainer>
+  <author email="maelyslupin6@gmail.com">Maelys Lupin</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+
+  <export>
+  </export>
+</package>

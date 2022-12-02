@@ -1,0 +1,907 @@
+<?xml version="1.0"?>
+<!-- Revolute-Revolute Manipulator -->
+<robot name="rrbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Constants for robot dimensions -->
+  <xacro:property name="lower" value="-1.57" />
+  <xacro:property name="upper" value="1.57" />
+  <xacro:property name="effort" value="0" />
+  <xacro:property name="lower_prism" value="-0.7" />
+  <xacro:property name="upper_prism" value="-0.08" />
+  <xacro:property name="effort_prism" value="5" />
+  <xacro:property name="damping" value="0" />
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find rrbot_description)/urdf/rrbot.gazebo" />
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find rrbot_description)/urdf/materials.xacro" />
+
+  <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="0 0 1.5" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="plateau_mobile_link"/>
+  </joint>
+
+  <!-- Base Link -->
+  <!-- plateau mobile -->
+  <link name="plateau_mobile_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/Plaque_mobile.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link> -->
+
+  <!-- CROISILLIONS -->
+  <joint name="plateau_mobile_joint" type="fixed">
+  <!-- <joint name="joint1" type="revolute"> -->
+    <axis xyz="0.5 -0.866 0" />
+    <origin xyz="0.208 -0.575 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion1_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 1 -->
+  <link name="croisillion1_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut1.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint2" type="fixed">
+    <axis xyz="0.5 -0.866 0" />
+    <origin xyz="0.395 -0.465 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion2_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 2 -->
+  <link name="croisillion2_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint3" type="fixed">
+    <axis xyz="0.5 0.866 0" />
+    <origin xyz="0.395 0.465 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion3_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 3 -->
+  <link name="croisillion3_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut3.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint4" type="fixed">
+    <axis xyz="0.5 0.866 0" />
+    <origin xyz="0.205 0.58 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion4_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 4 -->
+  <link name="croisillion4_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut4.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint5" type="fixed">
+    <axis xyz="1 0 0" />
+    <origin xyz="-0.6 0.11 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion5_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 5 -->
+  <link name="croisillion5_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut5.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint6" type="fixed">
+    <axis xyz="1 0 0" />
+    <origin xyz="-0.6 -0.11 -0.1" rpy="0 0 0"/>
+    <parent link="plateau_mobile_link"/>
+    <child link="croisillion6_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- croisillion 6 -->
+  <link name="croisillion6_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_haut6.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <!-- VERIN HAUT -->
+  <joint name="plateau_mobile_joint7" type="fixed">
+    <axis xyz="0.866 0.5 0" />
+    <origin xyz="0 0 0" rpy="-0.261799 0.471239 0"/>
+    <parent link="croisillion1_link"/>
+    <child link="verin_haut1_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+
+  <!-- verin haut 1 -->
+  <link name="verin_haut1_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<cylinder radius="1" length="0.5"/>
+      </geometry>
+    </collision>
+	
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 -0.12"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut1.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint8" type="fixed">
+    <axis xyz="0.866 0.5 0" />
+    <origin xyz="0 0 0" rpy="0.261799 -0.471239 0"/>
+    <parent link="croisillion2_link"/>
+    <child link="verin_haut2_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- verin haut 2 -->
+  <link name="verin_haut2_link">
+
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 -0.12"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint9" type="fixed">
+    <axis xyz="0.866 -0.5 0" />
+    <origin xyz="0 0 0" rpy="-0.261799 -0.471239 0"/>
+    <parent link="croisillion3_link"/>
+    <child link="verin_haut3_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- verin haut 3 -->
+  <link name="verin_haut3_link">
+
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 0.12"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut3.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint10" type="fixed">
+    <axis xyz="0.866 -0.5 0" />
+    <origin xyz="0 0 0" rpy="0.261799 0.471239 0"/>
+    <parent link="croisillion4_link"/>
+    <child link="verin_haut4_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- verin haut 4 -->
+  <link name="verin_haut4_link">
+
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 0.12"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut4.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint11" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0" rpy="0.523599 0 0"/>
+    <parent link="croisillion5_link"/>
+    <child link="verin_haut5_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- verin haut 5 -->
+  <link name="verin_haut5_link">
+
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut5.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="plateau_mobile_joint12" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0" rpy="-0.523599 0 0"/>
+    <parent link="croisillion6_link"/>
+    <child link="verin_haut6_link"/>
+    <limit lower="-1.57" upper="1.57" effort="2.5" velocity="1" />
+  </joint>
+
+  <!-- verin haut 6 -->
+  <link name="verin_haut6_link">
+
+    <visual>
+      <origin xyz="0 0 -0.055" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_haut6.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <!-- VERIN BAS -->
+  <joint name="verin_joint1" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut1_link"/>
+    <child link="verin_bas1_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 1 -->
+  <link name="verin_bas1_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas1.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="verin_joint2" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut2_link"/>
+    <child link="verin_bas2_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 2 -->
+  <link name="verin_bas2_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <joint name="verin_joint3" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut3_link"/>
+    <child link="verin_bas3_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 3 -->
+  <link name="verin_bas3_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas3.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="verin_joint4" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut4_link"/>
+    <child link="verin_bas4_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 4 -->
+  <link name="verin_bas4_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas4.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="verin_joint5" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut5_link"/>
+    <child link="verin_bas5_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 5 -->
+  <link name="verin_bas5_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas5.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <joint name="verin_joint6" type="prismatic">
+    <axis xyz="0 0 1" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="verin_haut6_link"/>
+    <child link="verin_bas6_link"/>
+    <limit lower="-0.7" upper="-0.08" effort="4" velocity="1" />
+    <dynamics damping="0" friction="1" />
+  </joint>
+
+  <!-- verin bas 6 -->
+  <link name="verin_bas6_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/verin_bas6.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <!-- CROISILLIONS BAS -->
+  <joint name="croisillion_bas_joint1" type="revolute">
+    <axis xyz="0.866 0.5 -0.577" />
+    <origin xyz="0 0 -0.957" rpy="0.3 -0.45 0"/>
+    <parent link="verin_bas1_link"/>
+    <child link="croisillion_bas1_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 1 -->
+  <link name="croisillion_bas1_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas1.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="croisillion_bas_joint2" type="revolute">
+    <axis xyz="0.866 0.5 0.577" />
+    <origin xyz="0 0 -0.957" rpy="-0.3 0.45 0"/>
+    <parent link="verin_bas2_link"/>
+    <child link="croisillion_bas2_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 2 -->
+  <link name="croisillion_bas2_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="croisillion_bas_joint3" type="revolute">
+    <axis xyz="0.866 -0.5 0.577" />
+    <origin xyz="0 0 -0.957" rpy="0.3 0.45 0"/>
+    <parent link="verin_bas3_link"/>
+    <child link="croisillion_bas3_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 3 -->
+  <link name="croisillion_bas3_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas3.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="croisillion_bas_joint4" type="revolute">
+    <axis xyz="0.866 -0.5 -0.577" />
+    <origin xyz="0 0 -0.957" rpy="-0.3 -0.45 0"/>
+    <parent link="verin_bas4_link"/>
+    <child link="croisillion_bas4_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 4 -->
+  <link name="croisillion_bas4_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas4.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="croisillion_bas_joint5" type="revolute">
+    <axis xyz="0 0.866 0.57" />
+    <origin xyz="0 0 -0.957" rpy="-0.55 0 0"/>
+    <parent link="verin_bas5_link"/>
+    <child link="croisillion_bas5_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 5 -->
+  <link name="croisillion_bas5_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas5.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="croisillion_bas_joint6" type="revolute">
+    <axis xyz="0 -0.866 0.57" />
+    <origin xyz="0 0 -0.957" rpy="0.55 0 0"/>
+    <parent link="verin_bas6_link"/>
+    <child link="croisillion_bas6_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="1" />
+    <dynamics damping="${damping}" friction="0" />
+  </joint>
+
+  <!-- croisillion bas 6 -->
+  <link name="croisillion_bas6_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/croisillion_bas6.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <!-- CARDANS BAS -->
+  <joint name="cardan_bas_joint1" type="revolute">
+    <axis xyz="0.5 -0.866 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas1_link"/>
+    <child link="cardan_bas1_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 1 -->
+  <link name="cardan_bas1_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas1_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <joint name="cardan_bas_joint2" type="revolute">
+    <axis xyz="0.5 -0.866 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas2_link"/>
+    <child link="cardan_bas2_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 2 -->
+  <link name="cardan_bas2_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas2_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="cardan_bas_joint3" type="revolute">
+    <axis xyz="0.5 0.866 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas3_link"/>
+    <child link="cardan_bas3_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 3 -->
+  <link name="cardan_bas3_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas3_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="cardan_bas_joint4" type="revolute">
+    <axis xyz="0.5 0.866 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas4_link"/>
+    <child link="cardan_bas4_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 4 -->
+  <link name="cardan_bas4_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas4_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="cardan_bas_joint5" type="revolute">
+    <axis xyz="1 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas5_link"/>
+    <child link="cardan_bas5_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 5 -->
+  <link name="cardan_bas5_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas5_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="cardan_bas_joint6" type="revolute">
+    <axis xyz="1 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="croisillion_bas6_link"/>
+    <child link="cardan_bas6_link"/>
+    <limit lower="${lower}" upper="${upper}" effort="4" velocity="1" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+
+  <!-- cardan bas 6 -->
+  <link name="cardan_bas6_link">
+    <collision>;
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+	<box size="0.1 0.1 0.01"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://rrbot_description/meshes/cardan_bas6_2.dae"
+        scale="1 1 1" />
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+</robot>
