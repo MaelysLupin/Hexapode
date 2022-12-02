@@ -1,11 +1,12 @@
 # Hexapode
+
+<img src="Hexa.png" width="250" height="250">
+
 Assistant engineer internship project
 
 Automatic landing of a drone by visual servoing
 
 Part covered : Modeling and simulation of the behavior of a naval platform in ROS (Robot Operating System)
-
-<img src="Hexa.png" width="250" height="250">
 
 ## Description
 
