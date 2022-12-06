@@ -1,7 +1,7 @@
 # Hexapode
 
 <img src="Hexa.png" width="250" height="250">
-<img src="mouv.gif">
+<img src="mouv.gif" width="2000" height="900">
 
 Assistant engineer internship project
 
