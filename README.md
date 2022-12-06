@@ -61,5 +61,5 @@ or
 
     rosrun rrbot_control fixe.py
     
-<img src="mouv.gif" width="450" height="250">
+<img src="mouv.gif">
 
