@@ -1,7 +1,8 @@
 # Hexapode
 
 <img src="Hexa.png" width="250" height="250">
-<img src="x et y.webm">
+<!-- <img src="mouv.gif"> -->
+[x et y.webm](https://user-images.githubusercontent.com/98482065/205934318-32d18e8c-08da-47eb-9109-269c8de9fb01.webm)
 
 Assistant engineer internship project
 
